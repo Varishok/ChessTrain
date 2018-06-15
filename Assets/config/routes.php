@@ -1,5 +1,7 @@
 <?php
 return array(
-    'groups' => 'groups/groups',
-    '' => 'index/index'
+    'groups/login' => 'groups/login',
+    'groups' => 'groups',
+
+    '' => 'index'
 );

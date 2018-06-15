@@ -8,4 +8,8 @@ class IndexController {
         return true;
     }
 
+    public function loginIndex() {
+        require_once(ROOT.'/Views/Index/reg.php');
+        return true;
+    }
 }
