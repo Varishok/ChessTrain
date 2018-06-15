@@ -38,11 +38,11 @@ include_once(ROOT.'/Assets/Additional.php');
     </article>
     <form action="" class="reg-block" method="POST" id="reg-block">
         <div class="reg-block__caption">Join us</div>
-        <input class="reg-block__input " type="text" placeholder="Enter email" name="login" autocomplete="off" required/>
-        <input class="reg-block__input " type="text" placeholder="Enter username" name="username" autocomplete="off" required/>
-        <input class="reg-block__input " type="password" placeholder="Enter password" name="password" autocomplete="off" required/>
-        <input class="reg-block__input " type="password" placeholder="Again, password" name="password_confirm" autocomplete="off" required/>
-        <input class="reg-block__input reg-block__submit" type="submit" value="Register" name="reg"/>
+        <input class="reg-block__input reg-block__email" type="text" placeholder="Enter email" name="login" autocomplete="off" required/>
+        <input class="reg-block__input reg-block__username" type="text" placeholder="Enter username" name="username" autocomplete="off" required/>
+        <input class="reg-block__input reg-block__password" type="password" placeholder="Enter password" name="password" autocomplete="off" required/>
+        <input class="reg-block__input reg-block__password2" type="password" placeholder="Again, password" name="password_confirm" autocomplete="off" required/>
+        <input class="reg-block__input reg-block__submit" type="submit" value="Register" name="reg" disabled/>
     </form>
     <?php
     if(isset($_POST['reg'])){
@@ -68,5 +68,6 @@ include_once(ROOT.'/Assets/Additional.php');
     ?>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
+<script src="/Assets/js/main.js"></script>
 </body>
 </html>
