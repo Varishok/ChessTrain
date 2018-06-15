@@ -15,8 +15,8 @@ include_once(ROOT.'/Assets/Additional.php');
     <div class="header">
         <nav>
             <ul class="header__list">
-                <li class="header__item logo-title"><a class="header__link" href="#">Social&nbsp;Connections</a></li>
-                <li class="header__item header__nav"><a class="header__link" href="#">About</a></li>
+                <li class="header__item logo-title"><a class="header__link" href="/">Social&nbsp;Connections</a></li>
+                <li class="header__item header__nav"><a class="header__link" href="/">About</a></li>
                 <li class="header__item header__nav"><a class="header__link" href="#" id="login_button">Log&nbsp;In</a></li>
             </ul>
         </nav>

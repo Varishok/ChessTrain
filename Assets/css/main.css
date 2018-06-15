@@ -102,13 +102,12 @@ header {
     margin: 3rem auto;
     max-width: 300px;
     width: inherit;
-    display: inline-block;
+    display: block;
     -webkit-box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23);
     box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23);
     background-color: #fff;
     padding: 2rem;
-    font-family: 'Helvetica';
-    display: none; }
+    font-family: 'Helvetica'; }
 
 .modal-login__caption {
     margin-bottom: 1rem;

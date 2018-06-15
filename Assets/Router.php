@@ -43,7 +43,7 @@ class Router {
                 $action_name = 'action'.ucfirst(array_shift($segments));
 
                 $parameters = $segments;
-                echo '<script>console.log("' . $controller_name .'")</script>';
+
 
                 // Подключаем файл класса-контроллера
                 $controller_file = ROOT.'/Controllers/'.$controller_name.'.php';
@@ -52,7 +52,10 @@ class Router {
 
                 // Создаем объект, вызываем метод (т.е. action)
                 $controller_object = new $controller_name;
-                if ($controller_name == 'IndexController' || $controller_name == 'GroupsController')
+
+                echo "<script>console.log('" . (json_encode(array($controller_object, $action_name))) . "')</script>";
+
+                if ($action_name == 'action')
                     $result = $controller_object->actionIndex();
                 else
                     $result = call_user_func_array(array($controller_object, $action_name), $parameters);
