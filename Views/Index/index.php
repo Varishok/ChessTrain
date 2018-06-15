@@ -34,16 +34,46 @@ include_once(ROOT.'/Assets/Additional.php');
             staying online in popular social networks.
         </p>
     </article>
-    <form class="reg-block">
+    <?php
+        if(isset($_POST['reg'])){
+            $User = new User();
+            $User->Login = $_POST['login'];
+            $User->Name = $_POST['username'];
+            $User->Password = $_POST['password'];
+            $password_confirm = $POST['password_confirm'];
+            if($User->Password == $password_confirm){
+                $res = UserRepository::addUser($User);
+                if (is_numeric($res)) {
+                    echo "Success.";
+                }
+                else
+                    echo "Fail.";
+            }
+            else{
+                echo "Passwords are not equals.";
+            }
+
+            if (isset($_GET['s']) && !empty($_GET['s']))
+                echo 'Данные успешно обновлены';
+        }
+
+    ?>
+    <form class="reg-block" method="POST" id="reg-block">
         <div class="reg-block__caption">Join us</div>
-        <input class="reg-block__input " type="text" placeholder="Enter email" name="login"/>
-        <input class="reg-block__input " type="text" placeholder="Enter username" name="username"/>
-        <input class="reg-block__input " type="password" placeholder="Enter password" name="password"/>
-        <input class="reg-block__input " type="password" placeholder="Again, password" name="password_confirm"/>
-        <input class="reg-block__input reg-block__submit" type="submit" value="Register" name="undefined"/>
-        <return> </return>
+        <input class="reg-block__input " type="text" placeholder="Enter email" name="login" autocomplete="off" required/>
+        <input class="reg-block__input " type="text" placeholder="Enter username" name="username" autocomplete="off" required/>
+        <input class="reg-block__input " type="password" placeholder="Enter password" name="password" autocomplete="off" required/>
+        <input class="reg-block__input " type="password" placeholder="Again, password" name="password_confirm" autocomplete="off" required/>
+        <input class="reg-block__input reg-block__submit" type="submit" value="Register" name="reg"/>
     </form>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
+<script>
+    $(function() {
+        $('#reg-block').on('submit', function(e){
+            e.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>

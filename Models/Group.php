@@ -1,5 +1,5 @@
 <?php
 class Group {
-    public $GroupId;
-    public $GroupName;
+    public $Id;
+    public $Name;
 }

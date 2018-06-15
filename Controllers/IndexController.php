@@ -12,4 +12,8 @@ class IndexController {
         require_once(ROOT.'/Views/Index/reg.php');
         return true;
     }
+
+    public function registeredIndex() {
+
+    }
 }
