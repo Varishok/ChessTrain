@@ -1,5 +1,6 @@
 <?php
 include_once(ROOT.'/Assets/Additional.php');
+include_once(ROOT.'/Assets/Repository/UserRepository.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,21 +41,21 @@ include_once(ROOT.'/Assets/Additional.php');
             $User->Login = $_POST['login'];
             $User->Name = $_POST['username'];
             $User->Password = $_POST['password'];
-            $password_confirm = $POST['password_confirm'];
+            $password_confirm = $_POST['password_confirm'];
             if($User->Password == $password_confirm){
                 $res = UserRepository::addUser($User);
                 if (is_numeric($res)) {
-                    echo "Success.";
+                    echo "<script>console.log(Success.)</script>";
                 }
                 else
-                    echo "Fail.";
+                    echo "<script>console.log(Fail.)</script>";
             }
             else{
-                echo "Passwords are not equals.";
+                echo "<script>console.log(Passwords are not equals.)</script>";
             }
 
-            if (isset($_GET['s']) && !empty($_GET['s']))
-                echo 'Данные успешно обновлены';
+            //if (isset($_GET['s']) && !empty($_GET['s']))
+             //   echo 'Данные успешно обновлены';
         }
 
     ?>
@@ -68,12 +69,5 @@ include_once(ROOT.'/Assets/Additional.php');
     </form>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
-<script>
-    $(function() {
-        $('#reg-block').on('submit', function(e){
-            e.preventDefault();
-        }
-    });
-</script>
 </body>
 </html>
