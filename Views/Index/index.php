@@ -1,6 +1,7 @@
 <?php
-include_once(ROOT.'/Assets/Additional.php');
+session_start();
 include_once(ROOT.'/Assets/Repository/UserRepository.php');
+include_once(ROOT.'/Assets/Additional.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,32 +36,7 @@ include_once(ROOT.'/Assets/Repository/UserRepository.php');
             staying online in popular social networks.
         </p>
     </article>
-    <?php
-        if(isset($_POST['reg'])){
-            $User = new User();
-            $User->Login = $_POST['login'];
-            $User->Name = $_POST['username'];
-            $User->Password = $_POST['password'];
-            $password_confirm = $_POST['password_confirm'];
-            if($User->Password == $password_confirm){
-                $res = UserRepository::addUser($User);
-
-                if (is_numeric($res)) {
-                    echo "<script>console.log('Success.')</script>";
-                }
-                else
-                    echo "<script>console.log('". $res ."')</script>";
-            }
-            else{
-                echo "<script>console.log(Passwords are not equals.)</script>";
-            }
-
-            //if (isset($_GET['s']) && !empty($_GET['s']))
-             //   echo 'Данные успешно обновлены';
-        }
-
-    ?>
-    <form class="reg-block" method="POST" id="reg-block">
+    <form action="" class="reg-block" method="POST" id="reg-block">
         <div class="reg-block__caption">Join us</div>
         <input class="reg-block__input " type="text" placeholder="Enter email" name="login" autocomplete="off" required/>
         <input class="reg-block__input " type="text" placeholder="Enter username" name="username" autocomplete="off" required/>
@@ -68,6 +44,28 @@ include_once(ROOT.'/Assets/Repository/UserRepository.php');
         <input class="reg-block__input " type="password" placeholder="Again, password" name="password_confirm" autocomplete="off" required/>
         <input class="reg-block__input reg-block__submit" type="submit" value="Register" name="reg"/>
     </form>
+    <?php
+    if(isset($_POST['reg'])){
+        $User = new User();
+        $User->Login = $_POST['login'];
+        $User->Name = $_POST['username'];
+        $User->Password = $_POST['password'];
+        $password_confirm = $_POST['password_confirm'];
+        if($User->Password == $password_confirm){
+            $res = UserRepository::addUser($User);
+            if(is_numeric($res)) {
+                $_SESSION['id'] = $res;
+                $_SESSION['userName'] = $User->Name;
+                echo "<script>window.location.href='/login';</script>";
+            }
+            else
+                echo "<script>alert('". $res ."')</script>";
+        }
+        else{
+            echo "<script>alert('Passwords are not equals.')</script>";
+        }
+    }
+    ?>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
 </body>

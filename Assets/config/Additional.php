@@ -58,11 +58,3 @@ function dateRU_format($input, $full) {
     else
         return "нет информации";
 }
-
-/**
- * redirect to $url
- */
-function redirect($url) {
-    echo "<script>window.location.href='$url';</script>";
-    die();
-}
