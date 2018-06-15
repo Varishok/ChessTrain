@@ -69,5 +69,10 @@ include_once(ROOT.'/Assets/Repository/UserRepository.php');
     </form>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
+<script>
+    $('#reg-block').on('submit', function(e){
+        e.preventDefault();
+    })
+</script>
 </body>
 </html>
