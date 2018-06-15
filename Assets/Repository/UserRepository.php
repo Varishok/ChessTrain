@@ -3,7 +3,7 @@
 
     class UserRepository
     {
-        function generateSalt()
+        public function generateSalt()
         {
             $salt = '';
             $saltLength = 8;
@@ -16,7 +16,7 @@
 
         public function addUser(User $User){
             $db = new Database();
-            $User->Salt = $this->generateSalt();
+            $User->Salt = UserRepository::generateSalt();
             $User->Password = md5($User->Password . $User->Salt);
             $res = $db->insert("INSERT INTO Users (login,password,salt,userName) 
 								VALUES ('".$User->Login."','".$User->Password."','".$User->Salt."','".$User->Name."')");

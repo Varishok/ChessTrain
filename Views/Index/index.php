@@ -44,11 +44,12 @@ include_once(ROOT.'/Assets/Repository/UserRepository.php');
             $password_confirm = $_POST['password_confirm'];
             if($User->Password == $password_confirm){
                 $res = UserRepository::addUser($User);
+
                 if (is_numeric($res)) {
-                    echo "<script>console.log(Success.)</script>";
+                    echo "<script>console.log('Success.')</script>";
                 }
                 else
-                    echo "<script>console.log(Fail.)</script>";
+                    echo "<script>console.log('". $res ."')</script>";
             }
             else{
                 echo "<script>console.log(Passwords are not equals.)</script>";
@@ -69,10 +70,5 @@ include_once(ROOT.'/Assets/Repository/UserRepository.php');
     </form>
 </main>
 <script src="/Assets/js/libs.min.js"></script>
-<script>
-    $('#reg-block').on('submit', function(e){
-        e.preventDefault();
-    })
-</script>
 </body>
 </html>
