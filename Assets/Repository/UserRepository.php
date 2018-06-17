@@ -23,4 +23,35 @@
 
             return $res;
         }
+
+        public function getUser($id, $username) {
+            $db = new Database();
+            $res = $db->select('SELECT * FROM Users WHERE userID="'.$id.'", userName="'.$username.'"');
+
+            if($res !== false) {
+                return $res->fetch();
+            }
+            else
+                return null;
+        }
+
+        public function logIn($login, $password){
+            $db = new Database();
+            $res = $db->select('SELECT * FROM Users WHERE login="'.$login.'"');
+            if($res != false){
+                $row = $res->fetch();
+                $User = new User();
+                $User->Id = $row['userID'];
+                $User->Salt = $row['salt'];
+                $User->Name = $row['userName'];
+                $User->Password = $row['password'];
+                $saltedpassword = md5($password.$User->Salt);
+                if($saltedpassword == $User->Password){
+                    return $User;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
     }
