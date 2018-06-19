@@ -20,9 +20,9 @@ class Router {
         // Проверяем наличие такого запроса в routes.php
         foreach($this->routes as $uri_pattern => $path) {
 
-            echo '<script>console.log("'. "~$uri_pattern~" . " + " . $uri .'")</script>';
+            //echo '<script>console.log("'. "~$uri_pattern~" . " + " . $uri .'")</script>';
 
-            echo '<script>console.log("' . (preg_match("~$uri_pattern~", $uri) ? "YES" : "NO") .'")</script>';
+            //echo '<script>console.log("' . (preg_match("~$uri_pattern~", $uri) ? "YES" : "NO") .'")</script>';
             // Сравниваем $uri_pattern и $uri
 
             if (preg_match("~$uri_pattern~", $uri)) {
@@ -53,7 +53,7 @@ class Router {
                 // Создаем объект, вызываем метод (т.е. action)
                 $controller_object = new $controller_name;
 
-                echo "<script>console.log('" . (json_encode(array($controller_object, $action_name))) . "')</script>";
+                json_encode(array($controller_object, $action_name));
 
                 if ($action_name == 'action')
                     $result = $controller_object->actionIndex();

@@ -1,21 +1,19 @@
 <?php
-
 /**
  * decl_of_num: Склоняет словоформу
  *
  * @return string
  */
-function decl_of_num($number, $titles) {
+function decl_of_num($number, $titles){
     $cases = array(2, 0, 1, 1, 1, 2);
     return $titles[ ($number%100 > 4 && $number%100 < 20) ? 2 : $cases[($number%10 < 5) ? $number%10 : 5] ];
 }
-
 /**
  * dateRU_format: Конвертирует дату input в формат "д м г ч:м:с".
  *
  * @return string
  */
-function dateRU_format($input, $full) {
+function dateRU_format($input, $full){
     $month_short = array('01' => 'янв',
         '02' => 'фев',
         '03' => 'мар',
@@ -42,19 +40,14 @@ function dateRU_format($input, $full) {
         '11' => 'ноября',
         '12' => 'декабря'
     );
-
-    if ($input != '') {
-
+    if ($input != ''){
         $dt = strtotime($input);
         $day = strftime('%d', $dt);
         $month = ($full == 1) ? $month_full[strftime('%m', $dt)] : $month_short[strftime('%m', $dt)];
         $year = strftime('%Y', $dt);
         $time = strftime('%H:%M:%S', $dt);
-
         return $day . " " . $month . " " . $year . " г. " . $time;
-
     }
-
     else
         return "нет информации";
 }

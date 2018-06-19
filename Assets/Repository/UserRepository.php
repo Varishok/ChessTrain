@@ -1,6 +1,5 @@
 <?php
     include(ROOT.'/Models/User.php');
-
     class UserRepository
     {
         public function generateSalt()
@@ -9,11 +8,10 @@
             $saltLength = 8;
             for($i = 0; $i < $saltLength; $i++)
             {
-                $salt .= chr(mt_rand(33, 126));
+                $salt .= chr(mt_rand(43, 126));
             }
             return $salt;
         }
-
         public function addUser(User $User){
             $db = new Database();
             $User->Salt = UserRepository::generateSalt();
@@ -23,21 +21,18 @@
 
             return $res;
         }
-
         public function getUser($id, $username) {
             $db = new Database();
-            $res = $db->select('SELECT * FROM Users WHERE userID="'.$id.'", userName="'.$username.'"');
-
+            $res = $db->select("SELECT * FROM Users WHERE userID='".$id."' AND userName='".$username."'");
             if($res !== false) {
-                return $res->fetch();
+                return true;
             }
             else
-                return null;
+                return false;
         }
-
         public function logIn($login, $password){
             $db = new Database();
-            $res = $db->select('SELECT * FROM Users WHERE login="'.$login.'"');
+            $res = $db->select("SELECT * FROM Users WHERE login='".$login."'");
             if($res != false){
                 $row = $res->fetch();
                 $User = new User();

@@ -1,7 +1,25 @@
 <?php
-session_start();
-include_once(ROOT.'/Assets/Repository/UserRepository.php');
-include_once(ROOT.'/Assets/Additional.php');
+    session_start();
+    include_once(ROOT.'/Assets/Repository/UserRepository.php');
+    include_once(ROOT.'/Assets/config/Additional.php');
+    if(!empty($_SESSION['id']) and !empty($_SESSION['username'])){
+        if(UserRepository::getUser($_SESSION['id'],$_SESSION['username'])){
+            header('Location:/groups');
+        }
+    }
+    if(isset($_POST['log_in'])){
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        $res = UserRepository::logIn($login,$password);
+        if($res){
+            $_SESSION['id'] = $res->Id;
+            $_SESSION['username'] = $res->Name;
+            session_write_close();
+            header('Location:/groups');
+        } else {
+            echo "<script>alert('Check the data.')</script>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,13 +31,6 @@ include_once(ROOT.'/Assets/Additional.php');
     <link rel="stylesheet" href="/Assets/css/main.css"/>
 </head>
 <body>
-<?php
-    if(!empty($_SESSION['id'] and !empty($_SESSION['username']))){
-        if(UserRepository::getUser($_SESSION['id'],$_SESSION['username'])){
-            echo "<script>window.location.href='/groups';</script>";
-        }
-    }
-?>
 <header>
     <div class="header">
         <nav>
@@ -40,20 +51,6 @@ include_once(ROOT.'/Assets/Additional.php');
         <return> </return>
     </form>
 </div>
-<?php
-    if(isset($_POST['log_in'])){
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $res = UserRepository::logIn($login,$password);
-        if($res){
-            $_SESSION['id'] = $res->Id;
-            $_SESSION['username'] = $res->Name;
-            echo "<script>window.location.href='/groups';</script>";
-        } else {
-            echo "<script>alert('Check the data.')</script>";
-        }
-    }
-?>
 <script src="/Assets/js/libs.min.js"></script>
 </body>
 </html>
