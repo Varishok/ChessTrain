@@ -21,6 +21,16 @@
 <div class="group-cards">
     <div class="group-card" id="group-card_add"><span class="group-card__title">ADD +</span></div>
 </div>
+<div class="wrapper__add-block not-active">
+  <div class="group-cards__add-block add-block">
+    <form class="" action="index.html" method="post">
+      <input class="add-block__input" type="text" name="" value="" placeholder="Enter group name..">
+      <input class="add-block__submit" id="add-block__add" type="submit" name="" value=" ADD ">
+      <button class="add-block__submit" id="add-block__close" name="" value=" CLOSE ">CLOSE</button>
+    </form>
+  </div>
+</div>
 <script src="/Assets/js/libs.min.js"></script>
+<script src="/Assets/js/main.js" charset="utf-8"></script>
 </body>
 </html>

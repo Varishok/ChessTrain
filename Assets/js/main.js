@@ -48,4 +48,21 @@ $(function(){
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
+
+    $('#group-card_add').on('click', function(e){
+      e.preventDefault();
+      $(".wrapper__add-block").removeClass('not-active');
+      $('.group-cards__add-block').focus();
+    });
+    $('#add-block__close').on('click', function(e){
+      e.preventDefault();
+      console.log($(".wrapper__add-block"));
+      $(".wrapper__add-block").addClass('not-active');
+
+    });
+    $('.group-cards__add-block').on('blur', function(e){
+      e.preventDefault();
+      console.log($(".wrapper__add-block"));
+      $(".wrapper__add-block").addClass('not-active');
+    });
 });
