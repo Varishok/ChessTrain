@@ -1,26 +1,3 @@
-<?php
-    session_start();
-    include_once(ROOT.'/Assets/Repository/UserRepository.php');
-    include_once(ROOT.'/Assets/config/Additional.php');
-    if(!empty($_SESSION['id']) and !empty($_SESSION['username'])){
-        if(UserRepository::getUser($_SESSION['id'],$_SESSION['username'])){
-            header('Location:/groups');
-        }
-    }
-    if(isset($_POST['log_in'])){
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $res = UserRepository::logIn($login,$password);
-        if($res){
-            $_SESSION['id'] = $res->Id;
-            $_SESSION['username'] = $res->Name;
-            session_write_close();
-            header('Location:/groups');
-        } else {
-            echo "<script>alert('Check the data.')</script>";
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +20,7 @@
     </div>
 </header>
 <div class="modal_login">
-    <form class="modal-window modal-login" method="POST" action="">
+    <form class="modal-window modal-login" method="POST" action="login">
         <div class="modal-login__caption">Log In</div>
         <input class="reg-block__input modal-login__input" type="text" placeholder="Enter login" name="login" autocomplete="off" required/>
         <input class="reg-block__input modal-login__input" type="password" placeholder="Enter password" name="password" autocomplete="off" required/>

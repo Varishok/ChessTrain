@@ -1,29 +1,3 @@
-<?php
-session_start();
-include_once(ROOT.'/Assets/Repository/UserRepository.php');
-include_once(ROOT.'/Assets/config/Additional.php');
-if(isset($_POST['reg'])){
-    $User = new User();
-    $User->Login = $_POST['login'];
-    $User->Name = $_POST['username'];
-    $User->Password = $_POST['password'];
-    $password_confirm = $_POST['password_confirm'];
-    if($User->Password == $password_confirm){
-        $res = UserRepository::addUser($User);
-        if(is_numeric($res)) {
-            $_SESSION['id'] = $res;
-            $_SESSION['username'] = $User->Name;
-            session_write_close();
-            header('Location: /login');
-        }
-        else
-            echo "<script>alert('". $res ."')</script>";
-    }
-    else{
-        echo "<script>alert('Passwords are not equals.')</script>";
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +31,7 @@ if(isset($_POST['reg'])){
             staying online in popular social networks.
         </p>
     </article>
-    <form action="" class="reg-block" method="POST" id="reg-block">
+    <form action="registered" class="reg-block" method="POST" id="reg-block">
         <div class="reg-block__caption">Join us</div>
         <input class="reg-block__input reg-block__email" type="text" placeholder="Enter email" name="login" autocomplete="off" required/>
         <input class="reg-block__input reg-block__username" type="text" placeholder="Enter username" name="username" autocomplete="off" required/>

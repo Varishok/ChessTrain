@@ -5,7 +5,16 @@ class IndexController {
         return true;
     }
     public function actionLogin() {
-        require_once(ROOT.'/Views/Index/login.php');
-        return true;
+        session_start();
+        include_once(ROOT.'/Assets/Repository/UserRepository.php');
+        if(!empty($_SESSION['id']) and !empty($_SESSION['username'])){
+            if(UserRepository::getUser($_SESSION['id'],$_SESSION['username'])){
+                header('Location: http://myprojects/groups');
+                return true;
+            }
+        } else {
+            require_once(ROOT.'/Views/Index/login.php');
+            return true;
+        }
     }
 }

@@ -1,6 +1,8 @@
 <?php
 return array(
-    'groups' => 'groups/groups',
+    'registered' => 'user/registered',
+    'login/login' => 'user/login',
     'login' => 'index/login',
+    'groups' => 'groups/groups',
     '' => 'index'
 );
