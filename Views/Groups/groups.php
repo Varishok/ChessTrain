@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
         <nav>
             <ul class="header__list">
                 <li class="header__item logo-title"><a class="header__link" href="/">Social&nbsp;Connections</a></li>
-                <li class="header__item header__nav"><a class="header__link" href="./settings.html" id="login_button">Username</a></li>
+                <li class="header__item header__nav"><a class="header__link" href="./settings.html" id="login_button"><?php echo $_SESSION['username']; ?></a></li>
             </ul>
         </nav>
     </div>
@@ -23,7 +24,7 @@
 </div>
 <div class="wrapper__add-block not-active">
   <div class="group-cards__add-block add-block">
-    <form class="" action="index.html" method="post">
+    <form class="" action="" method="post">
       <input class="add-block__input" type="text" name="" value="" placeholder="Enter group name..">
       <input class="add-block__submit" id="add-block__add" type="submit" name="" value=" ADD ">
       <button class="add-block__submit" id="add-block__close" name="" value=" CLOSE ">CLOSE</button>
