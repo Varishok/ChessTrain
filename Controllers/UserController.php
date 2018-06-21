@@ -15,7 +15,8 @@ class UserController
                 $_SESSION['id'] = $res;
                 $_SESSION['username'] = $User->Name;
                 session_write_close();
-                header('Location: http://myprojects/login');
+                $host = $_SERVER['HTTP_HOST'];
+                header("Location: http://$host/login");
             }
             else
                 return false;
@@ -35,7 +36,8 @@ class UserController
             $_SESSION['id'] = $res->Id;
             $_SESSION['username'] = $res->Name;
             session_write_close();
-            header('Location: http://myprojects/groups');
+            $host = $_SERVER['HTTP_HOST'];
+            header("Location: http://$host/groups");
         } else {
             return false;
         }

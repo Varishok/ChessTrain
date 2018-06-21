@@ -24,8 +24,8 @@
 </div>
 <div class="wrapper__add-block not-active">
   <div class="group-cards__add-block add-block">
-    <form class="" action="" method="post">
-      <input class="add-block__input" type="text" name="" value="" placeholder="Enter group name..">
+    <form class="" action="addgroup" method="post">
+      <input class="add-block__input" type="text" name="namegroup" value="" placeholder="Enter group name..">
       <input class="add-block__submit" id="add-block__add" type="submit" name="" value=" ADD ">
       <button class="add-block__submit" id="add-block__close" name="" value=" CLOSE ">CLOSE</button>
     </form>

@@ -9,7 +9,8 @@ class IndexController {
         include_once(ROOT.'/Assets/Repository/UserRepository.php');
         if(!empty($_SESSION['id']) and !empty($_SESSION['username'])){
             if(UserRepository::getUser($_SESSION['id'],$_SESSION['username'])){
-                header('Location: http://myprojects/groups');
+                $host = $_SERVER['HTTP_HOST'];
+                header("Location: http://$host/groups");
                 return true;
             }
         } else {
