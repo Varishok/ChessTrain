@@ -5,7 +5,7 @@ return array(
     'userlogin' => 'user/login',
     'login' => 'index/login',
     'groups/addgroup' => 'groups/addgroup',
-    'addgroups' => 'groups/addgroup',
+    'addgroup' => 'groups/addgroup',
     'groups' => 'groups/groups',
     '' => 'index'
 );
