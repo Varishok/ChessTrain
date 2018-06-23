@@ -20,6 +20,7 @@
     </div>
 </header>
 <div class="group-cards">
+    <?php echo "<script>const GROUPS=JSON.parse('".$groups."');</script>"; ?>
     <div class="group-card" id="group-card_add"><span class="group-card__title">ADD +</span></div>
 </div>
 <div class="wrapper__add-block not-active">

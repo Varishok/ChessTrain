@@ -65,4 +65,15 @@ $(function(){
       console.log($(".wrapper__add-block"));
       $(".wrapper__add-block").addClass('not-active');
     });
+
+    function displayGroups(){
+      GROUPS.forEach(function(group){
+        var strDiv = `<div class="group-card group-id_${group.groupID}"><span class="group-card__title">${group.nameGroup}</span></div>`;
+        $('.group-cards').prepend(strDiv);
+      });
+    }
+
+
+    //GLOBAL SHOW
+    displayGroups();
 });
