@@ -18,4 +18,8 @@ class IndexController {
             return true;
         }
     }
+    public function actionSettings(){
+        require_once(ROOT.'/Views/Profile/settings.php');
+        return true;
+    }
 }
