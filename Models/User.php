@@ -6,4 +6,5 @@
         public $Salt;
         public $Name;
         public $Avatar;
+        public $Additions;
     }

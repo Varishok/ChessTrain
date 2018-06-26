@@ -32,7 +32,27 @@ class ContactRepository
         } else {
             return null;
         }
-
-
+    }
+    public function updateContact(Contact $Contact){
+        $db  = new Database();
+        $res = $db->update("UPDATE Contacts SET fullName='".$Contact->FullName."',phone='".$Contact->Phone."',picture='".$Contact->Picture."',links='".$Contact->Links."' WHERE conactsID='".$Contact->Id."'");
+        if(is_numeric($res)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function deleteContact($contactID){
+        $db = new Database();
+        $res = $db->delete("DELETE FROM Contacts WHERE contactID='".$contactID."'");
+        if($res!=0){
+            return false;
+        }
+        $res = $db->delete("DELETE FROM GroupsContacts WHERE contactID='".$contactID."'");
+        if($res==0){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

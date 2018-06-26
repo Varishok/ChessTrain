@@ -49,4 +49,27 @@
                 }
             }
         }
+        public function updateUser(User $User){
+            $db = new Database();
+            $res = $db->update("UPDATE Users SET userName='".$User->Name."',avatar='".$User->Avatar."',additions='".$User->Additions."' WHERE userID='".$User->Id."'");
+            if(is_numeric($res)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public function deleteUser($userID){
+            include_once(ROOT.'/Assets/Repository/GroupRepository.php');
+            $db = new Database();
+            $res = $db->select("SELECT * FROM UsersGroups WHERE userID='".$userID."'");
+            while($row = $res->fetch()){
+                GroupRepository::deleteGroup($row['groupID']);
+            }
+            $res = $db->delete("DELETE FROM Users WHERE userID='".$userID."'");
+            if($res==0){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

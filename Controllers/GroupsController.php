@@ -11,7 +11,7 @@ class GroupsController {
         $Group = new Group();
         $Group->Name = $_REQUEST['namegroup'];
         $res = GroupRepository::addGroup($Group);
-        if($res){
+        if(is_numeric($res)){
             $host = $_SERVER['HTTP_HOST'];
             header("Location: http://$host/groups");
             return true;
