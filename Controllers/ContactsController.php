@@ -12,6 +12,7 @@ class ContactsController
         include_once(ROOT.'/Assets/Repository/ContactRepository.php');
         $Contact = new Contact();
         $Contact->FullName = $_REQUEST['namecontact'];
+        $Contact->Phone = $_REQUEST['phone'];
         $res = ContactRepository::addContact($Contact);
         if($res){
             $host = $_SERVER['HTTP_HOST'];

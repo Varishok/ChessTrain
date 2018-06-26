@@ -5,7 +5,7 @@ class ContactRepository
     public function addContact(Contact $Contact){
         session_start();
         $db = new Database();
-        $Contact->Id = $db->insert("INSERT INTO Contacts (fullName) VALUES ('".$Contact->FullName."')");
+        $Contact->Id = $db->insert("INSERT INTO Contacts (fullName,phone) VALUES ('".$Contact->FullName."','".$Contact->Phone"')");
         $res = $db->insert("INSERT INTO GroupsContacts (groupID,contactsID) VALUES ('".$_SESSION['group_id']."','".$Contact->Id."')");
         if(is_numeric($res)){
             return true;
