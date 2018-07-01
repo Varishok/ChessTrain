@@ -68,12 +68,15 @@ $(function(){
 
     function displayGroups(){
       GROUPS.forEach(function(group){
-        var strDiv = `<div class="group-card group-id_${group.groupID}"><span class="group-card__title">${group.nameGroup}</span></div>`;
+        var strDiv = `<div class="group-card group-id_${group.groupID}" onClick="concreteGroup(${group.groupID})"><span class="group-card__title">${group.nameGroup}</span></div>`;
         $('.group-cards').prepend(strDiv);
       });
     }
-
-
     //GLOBAL SHOW
     displayGroups();
 });
+
+function concreteGroup(id){
+  console.log(id);
+  window.location = '/group=' + id;
+}
