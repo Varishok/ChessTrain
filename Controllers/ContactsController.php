@@ -1,10 +1,11 @@
 <?php
 class ContactsController
 {
-    public function actionContacts(){
+    public function actionContacts($id){
         include_once(ROOT.'/Assets/Repository/ContactRepository.php');
         include_once(ROOT.'/Assets/Repository/GroupRepository.php');
-        $_SESSION['group_id'] = $_REQUEST['group_id'];
+        $id = intval($id);
+        $_SESSION['group_id'] = $id;
         if(isset($_SESSION['id'])){
             if(GroupRepository::searchGroup($_SESSION['id'],$_SESSION['group_id'])){
                 $contacts = ContactRepository::getContacts();

@@ -8,9 +8,9 @@ return array(
     'addgroup' => 'groups/addgroup',
     'groups' => 'groups/groups',
 
-    'contacts?id=([0-9]+)/addcontact' => 'contacts/addcontact',
+    'group=([0-9]+)/addcontact' => 'contacts/addcontact',
     'addcontact' => 'contacts/addcontact',
-    'contacts?id=([0-9]+)' => 'contacts/contacts',
+    'group=([0-9]+)' => 'contacts/contacts/$1',
 
     'login' => 'index/login',
     'settings' => 'index/settings',
