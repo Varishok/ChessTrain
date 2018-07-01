@@ -31,7 +31,7 @@ class ContactsController
         $res = ContactRepository::addContact($Contact);
         if($res){
             $host = $_SERVER['HTTP_HOST'];
-            header("Location: http://$host/contacts?id=".$_SESSION['group_id']);
+            header("Location: http://$host/group=".$_SESSION['group_id']);
             return true;
         }
         return false;
