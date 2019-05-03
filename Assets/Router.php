@@ -16,7 +16,6 @@ class Router {
 
     public function run() {
         $uri = $this->getURI();
-
         // Проверяем наличие такого запроса в routes.php
         foreach($this->routes as $uri_pattern => $path) {
 

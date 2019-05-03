@@ -14,7 +14,7 @@
         <nav>
             <ul class="header__list">
                 <li class="header__item logo-title"><a class="header__link" href="/">Social&nbsp;Connections</a></li>
-                <li class="header__item header__nav"><a class="header__link" href="./settings.html" id="login_button"><?php echo $_SESSION['username']; ?></a></li>
+                <li class="header__item header__nav"><a class="header__link" href="./settings" id="login_button"><?php echo $_SESSION['username']; ?></a></li>
             </ul>
         </nav>
     </div>
