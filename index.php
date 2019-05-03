@@ -4,6 +4,7 @@ define('ROOT', dirname(__FILE__));
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT.'/Assets/logs/error.log');
 ini_set('display_errors', 0);
+require_once(ROOT.'/Assets/config/Additional.php');
 // Подключение файлов системы
 require_once(ROOT.'/Assets/Router.php');
 // Соединение с БД

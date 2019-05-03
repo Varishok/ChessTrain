@@ -1,5 +1,6 @@
 <div class="box">
     <div class="centered">
+        <?if(isset($_POST)):?>
         <table class="chess-board">
            <tbody>
             <tr>
@@ -15,25 +16,25 @@
             </tr>
             <tr>
                  <th>8</th>
-                 <td class="white" id="a8"></td>
-                 <td class="black" id="b8"></td>
-                 <td class="white" id="c8"></td>
-                 <td class="black" id="d8"></td>
-                 <td class="white" id="e8"></td>
-                 <td class="black" id="f8"></td>
-                 <td class="white" id="g8"></td>
-                 <td class="black" id="h8"></td>
+                 <td class="white black-rock " id="a8"></td>
+                 <td class="black black-knight" id="b8"></td>
+                 <td class="white black-bishop" id="c8"></td>
+                 <td class="black black-queen" id="d8"></td>
+                 <td class="white black-king" id="e8"></td>
+                 <td class="black black-bishop" id="f8"></td>
+                 <td class="white black-knight" id="g8"></td>
+                 <td class="black black-rock black-king" id="h8"></td>
             </tr>
             <tr>
                  <th>7</th>
-                 <td class="black" id="a7"></td>
-                 <td class="white" id="b7"></td>
-                 <td class="black" id="c7"></td>
-                 <td class="white" id="d7"></td>
-                 <td class="black" id="e7"></td>
-                 <td class="white" id="f7"></td>
-                 <td class="black" id="g7"></td>
-                 <td class="white" id="h7"></td>
+                 <td class="black black-pawn" id="a7"></td>
+                 <td class="white black-pawn" id="b7"></td>
+                 <td class="black black-pawn" id="c7"></td>
+                 <td class="white black-pawn" id="d7"></td>
+                 <td class="black black-pawn" id="e7"></td>
+                 <td class="white black-pawn" id="f7"></td>
+                 <td class="black black-pawn" id="g7"></td>
+                 <td class="white black-pawn" id="h7"></td>
             </tr>
             <tr>
                  <th>6</th>
@@ -81,27 +82,28 @@
             </tr>
             <tr>
                  <th>2</th>
-                 <td class="white" id="a2"></td>
-                 <td class="black" id="b2"></td>
-                 <td class="white" id="c2"></td>
-                 <td class="black" id="d2"></td>
-                 <td class="white" id="e2"></td>
-                 <td class="black" id="f2"></td>
-                 <td class="white" id="g2"></td>
-                 <td class="black" id="h2"></td>
+                 <td class="white white-pawn" id="a2"></td>
+                 <td class="black white-pawn" id="b2"></td>
+                 <td class="white white-pawn" id="c2"></td>
+                 <td class="black white-pawn" id="d2"></td>
+                 <td class="white white-pawn" id="e2"></td>
+                 <td class="black white-pawn" id="f2"></td>
+                 <td class="white white-pawn" id="g2"></td>
+                 <td class="black white-pawn" id="h2"></td>
             </tr>
             <tr>
                  <th>1</th>
-                 <td class="black" id="a1"></td>
-                 <td class="white" id="b1"></td>
-                 <td class="black" id="c1"></td>
-                 <td class="white" id="d1"></td>
-                 <td class="black" id="e1"></td>
-                 <td class="white" id="f1"></td>
-                 <td class="black" id="g1"></td>
-                 <td class="white" id="h1"></td>
+                 <td class="black white-rock" id="a1"></td>
+                 <td class="white white-knight" id="b1"></td>
+                 <td class="black white-bishop" id="c1"></td>
+                 <td class="white white-queen" id="d1"></td>
+                 <td class="black white-king" id="e1"></td>
+                 <td class="white white-bishop" id="f1"></td>
+                 <td class="black white-knight" id="g1"></td>
+                 <td class="white white-rock" id="h1"></td>
             </tr>
            </tbody>
         </table>
+        <?endif;?>
     </div>
 </div>

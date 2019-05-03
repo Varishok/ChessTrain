@@ -1,7 +1,8 @@
 <?php
 class IndexController {
     public function actionIndex() {
-        require_once(ROOT.'/Views/Index/index.php');
+        $view = '/Views/Index/index.php';
+        render();
         return true;
     }
     public function actionLogin() {

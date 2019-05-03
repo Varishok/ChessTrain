@@ -4,12 +4,10 @@ html, body {
 }
 
 header {
-    background-color: #2d41fb;
     font-family: 'Helvetica';
-    color: #fff;
     -webkit-box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23);
     box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23); }
-
+/*board*/
 .box { 
     text-align: center; 
     background-color: #eeeeee;
@@ -32,15 +30,53 @@ header {
     width: 56px; 
     height: 56px; 
     text-align: center; 
-    vertical-align: middle; 
+    vertical-align: middle;
+    background-size: 60px;
 }
 .chess-board .white { 
-    background: #f0d9b5; 
+    background-color: #f0d9b5; 
 }
 .chess-board .black { 
-    background: #b58863; 
+    background-color: #b58863; 
 }
-   
+.white-pawn {
+    background-image: url("../images/wP.png");
+}
+.black-pawn {
+    background-image: url("../images/bP.png");
+}
+.white-rock {
+    background-image: url("../images/wR.png");
+}
+.black-rock {
+    background-image: url("../images/bR.png");
+}
+.white-knight {
+    background-image: url("../images/wN.png");
+}
+.black-knight {
+    background-image: url("../images/bN.png");
+}
+.white-bishop {
+    background-image: url("../images/wB.png");
+}
+.black-bishop {
+    background-image: url("../images/bB.png");
+}
+.white-king {
+    background-image: url("../images/wK.png");
+}
+.black-king {
+    background-image: url("../images/bK.png");
+}
+.white-queen {
+    background-image: url("../images/wQ.png");
+}
+.black-queen {
+    background-image: url("../images/bQ.png");
+}
+
+/*-----------------*/ 
 .header__list {
     display: -webkit-box;
     display: -webkit-flex;
@@ -74,7 +110,7 @@ header {
         display: inline-block; } }
 
 .header__link {
-    color: #ffffff;
+    color: #090325;
     text-decoration: none; }
 
 .header__link:hover {
@@ -85,9 +121,8 @@ html, body {
     padding: 0; }
 
 header {
-    background-color: #2d41fb;
     font-family: 'Helvetica';
-    color: #fff;
+    color: #090325;
     -webkit-box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23);
     box-shadow: 0 10px 20px rgba(45, 65, 251, 0.19), 0 6px 6px rgba(45, 65, 251, 0.23); }
 
@@ -124,7 +159,7 @@ header {
         display: inline-block; } }
 
 .header__link {
-    color: #ffffff;
+    color: #090325;
     text-decoration: none; }
 
 .header__link:hover {
@@ -221,79 +256,7 @@ main.info-block {
     background-color: #2d41fb;
     color: white; }
 
-/*---------- group-cards ---------*/
-.group-cards {
-    margin: 2rem 0 0 2rem;
-    font-family: 'Helvetica';
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap; }
-
-.group-card {
-    cursor: pointer;
-    padding: 2rem;
-    margin: 0 1.5rem 1rem 0;
-    color: #090325;
-    border: 5px solid #2d41fb; }
-
-.group-card__title {
-    font-weight: bold; }
-
-.wrapper__add-block {
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    font: inherit;
-    box-sizing: border-box;
-}
-
-.group-cards__add-block {
-  position: absolute;
-  display: inline-block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  margin-top: 8rem;
-  padding-top: 15px;
-  padding-bottom: 30px;
-  max-width: 250px;
-  max-height: 120px;
-  vertical-align: middle;
-  box-sizing: border-box;
-  text-align: center;
-  background-color: #fff;
-  border: 5px solid #2d41fb;
-  -webkit-box-shadow: 0 10px 20px rgba(45, 65, 251, 0.13), 0 6px 6px rgba(45, 65, 251, 0.13);
-  box-shadow: 0 10px 20px rgba(45, 65, 251, 0.13), 0 6px 6px rgba(45, 65, 251, 0.13);
-}
-
-.add-block__input {
-    padding: 1rem;
-    width: 80%;
-}
-
-.add-block__submit {
-  margin-top: 10px;
-  padding: 0.2rem;
-  background-color: white;
-  border: 1px solid #2d41fb;
-}
-/*-----------------------------------*/
+/*-------------------------------*/
 
 /*-----------SUPPORTED-----------*/
 .block-active {
