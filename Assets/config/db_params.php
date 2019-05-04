@@ -1,5 +1,5 @@
 <?php
 define("DB_HOST", "localhost");
-define("DB_USER", "students");
-define("DB_PASS", "L18U2UXH");
-define("DB_NAME", "students_db");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "Train_Chess");

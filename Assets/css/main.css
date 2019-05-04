@@ -39,16 +39,19 @@ header {
 .chess-board .black { 
     background-color: #b58863; 
 }
+.chess-board .active { 
+    background-color: #ffa5a5; 
+}
 .white-pawn {
     background-image: url("../images/wP.png");
 }
 .black-pawn {
     background-image: url("../images/bP.png");
 }
-.white-rock {
+.white-rook {
     background-image: url("../images/wR.png");
 }
-.black-rock {
+.black-rook {
     background-image: url("../images/bR.png");
 }
 .white-knight {

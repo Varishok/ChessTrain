@@ -27,8 +27,13 @@ class Database {
         }
     }
     public function select($sql) {
-        if ($select_rows = $this->link->query($sql))
-            return ($select_rows->fetchColumn() > 0) ? $this->link->query($sql) : false;
+        try {
+            if ($select_rows = $this->link->query($sql))
+                return ($select_rows->fetchColumn() > 0) ? $this->link->query($sql) : false;
+        }
+        catch(PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
     }
     public function update($sql) {
         try {

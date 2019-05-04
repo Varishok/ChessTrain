@@ -13,8 +13,8 @@
         <nav>
             <ul class="header__list">
                 <li class="header__item logo-title"><a class="header__link" href="/">Chess Trainer</a></li>
-                <li class="header__item header__nav"><a class="header__link" href="./settings" id="login_button"><?php echo $_SESSION['username']; ?></a></li>
-                <li class="header__item header__nav"><a class="header__link" href="#" id="login_button">Log&nbsp;In</a></li>
+                <li class="header__item header__nav"><a class="header__link" href="/turn/" id="login_button">Pawn's&nbsp;Turn</a></li>
+                <li class="header__item header__nav"><a class="header__link" href="/login/" id="login_button">Log&nbsp;In</a></li>
             </ul>
         </nav>
     </div>
