@@ -1,8 +1,5 @@
 <?session_start()?>
-<div class="support">
-    <div class="centered">
-        <?if($_SESSION['add']):?>
-        <table class="chess-board">
+        <table class="chess-board support">
            <tbody>
             <tr>
                  <td class="white black-rook " id="a8"></td>
@@ -46,9 +43,3 @@
             </tr>
            </tbody>
         </table>
-        <form id="addBoard" method="POST" action="/turn/add/">
-            <input type="submit" value="Сохранить"/>
-        </form>
-        <?endif;?>
-    </div>
-</div>

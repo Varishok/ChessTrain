@@ -15,7 +15,7 @@ header {
 }
 .centered { 
     display: inline-block; 
-    margin: 0;
+    margin: 0 auto;
 }
 .chess-board { 
     border-spacing: 0; 
@@ -181,7 +181,8 @@ header {
 
 .modal-login__caption {
     margin-bottom: 1rem;
-    font-weight: 500; }
+    font-weight: 500; 
+    text-align: center;}
 
 .modal-login__input {
     padding: 0.5rem;
@@ -192,7 +193,8 @@ header {
     background-color: #fff;
     padding: 0.8rem;
     cursor: pointer;
-    border: 1px solid #2d41fb; }
+    border: 1px solid #2d41fb; 
+    margin: auto;}
 
 .modal-login__submit:hover {
     background-color: #2d41fb;
@@ -201,6 +203,13 @@ header {
 body {
     background-color: #eeeeee;
     color: #090325; }
+
+form {
+    margin-top: 10px;
+}
+#turns input{
+    width: 50px;
+}
 
 main.info-block {
     display: -webkit-box;
@@ -216,7 +225,7 @@ main.info-block {
     flex-wrap: wrap-reverse;
     margin-top: 2rem;
     font-family: 'Helvetica';
-    color: white; }
+    color: #080808; }
 
 .about-block {
     -webkit-box-flex: 1;
@@ -269,3 +278,66 @@ main.info-block {
 .not-active {
   display: none;
 }
+
+.check_answer{
+    margin-right:auto;
+}
+.check-success::after{
+    content: "\2714";
+}
+.check-error::after{
+    content: "\2718";
+}
+.support{
+    margin-right: auto;
+}
+/*-------------------------------*/
+
+/*--------------LIST-------------*/
+.list{
+    width: 750px;
+    clear: both;
+}
+.element-list{
+    float:left;
+    width: 230px;
+    padding: 5px;
+    text-align: center;
+}
+.element-list:hover{
+    background-color: #ffa5a5;
+}
+/*-------------------------------*/
+
+/*-------------GAME--------------*/
+.game{
+    padding: 10px;
+    text-align: center;
+}
+.game-table{
+    max-height: 500px;
+    border: 2px black;
+}
+.game-table-div{
+    height:300px;
+    overflow:scroll;
+}
+.game-table tr{
+    height: 18px;
+}
+.game-div{
+    margin:0 25% 0 25%;
+    width:50%;
+    padding: 5px;
+
+}
+.game-div a{
+    margin: 0 auto;
+    margin: 1px;
+    padding: 2px;
+    font-size: 40px;
+    text-decoration: none;
+    text-color: black;
+    align-items: center;
+}
+/*-------------------------------*/

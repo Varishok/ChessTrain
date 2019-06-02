@@ -28,11 +28,9 @@ class Router {
 
                 // Получаем внутренний путь из внешнего согласно правилу
                 $internal_route = preg_replace("~$uri_pattern~", $path, $uri);
-
                 // Определяем контроллер, action, параметры
 
                 $segments = explode('/', $internal_route);
-
                 $controller_name = array_shift($segments).'Controller';
 
 
@@ -40,14 +38,14 @@ class Router {
                 $controller_name = ucfirst($controller_name);
 
                 $action_name = 'action'.ucfirst(array_shift($segments));
-
                 $parameters = $segments;
-
 
                 // Подключаем файл класса-контроллера
                 $controller_file = ROOT.'/Controllers/'.$controller_name.'.php';
                 if (file_exists($controller_file))
                     include_once($controller_file);
+
+
 
                 // Создаем объект, вызываем метод (т.е. action)
                 $controller_object = new $controller_name;

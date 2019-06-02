@@ -2,28 +2,17 @@
     include(ROOT.'/Models/User.php');
     class UserRepository
     {
-        public function generateSalt()
-        {
-            $salt = '';
-            $saltLength = 8;
-            for($i = 0; $i < $saltLength; $i++)
-            {
-                $salt .= chr(mt_rand(43, 126));
-            }
-            return $salt;
-        }
         public function addUser(User $User){
             $db = new Database();
-            $User->Salt = UserRepository::generateSalt();
-            $User->Password = md5($User->Password . $User->Salt);
-            $res = $db->insert("INSERT INTO Users (login,password,salt,userName) 
-								VALUES ('".$User->Login."','".$User->Password."','".$User->Salt."','".$User->Name."')");
+            $User->Password = password_hash($User->Password, PASSWORD_DEFAULT);
+            $res = $db->insert("INSERT INTO User (email,login,password) 
+								VALUES ('".$User->Email."','".$User->Login."','".$User->Password."')");
 
             return $res;
         }
-        public function getUser($id, $username) {
+        public function getUser($id, $login) {
             $db = new Database();
-            $res = $db->select("SELECT * FROM Users WHERE userID='".$id."' AND userName='".$username."'");
+            $res = $db->select("SELECT * FROM User WHERE id_user='".$id."' AND login='".$login."'");
             if($res !== false) {
                 return true;
             }
@@ -32,16 +21,14 @@
         }
         public function logIn($login, $password){
             $db = new Database();
-            $res = $db->select("SELECT * FROM Users WHERE login='".$login."'");
+            $res = $db->select("SELECT * FROM User WHERE login='".$login."'");
             if($res != false){
-                $row = $res->fetch();
+                $row = $res->fetch_array();
                 $User = new User();
-                $User->Id = $row['userID'];
-                $User->Salt = $row['salt'];
-                $User->Name = $row['userName'];
+                $User->Id = $row['id_user'];
+                $User->Login = $row['login'];
                 $User->Password = $row['password'];
-                $saltedpassword = md5($password.$User->Salt);
-                if($saltedpassword == $User->Password){
+                if(password_verify($password, $User->Password)){
                     return $User;
                 }
                 else{
@@ -51,7 +38,7 @@
         }
         public function updateUser(User $User){
             $db = new Database();
-            $res = $db->update("UPDATE Users SET userName='".$User->Name."',avatar='".$User->Avatar."',additions='".$User->Additions."' WHERE userID='".$User->Id."'");
+            $res = $db->update("UPDATE User SET login='".$User->Login."' WHERE id_user='".$User->Id."'");
             if(is_numeric($res)){
                 return true;
             } else {
@@ -61,11 +48,7 @@
         public function deleteUser($userID){
             include_once(ROOT.'/Assets/Repository/GroupRepository.php');
             $db = new Database();
-            $res = $db->select("SELECT * FROM UsersGroups WHERE userID='".$userID."'");
-            while($row = $res->fetch()){
-                GroupRepository::deleteGroup($row['groupID']);
-            }
-            $res = $db->delete("DELETE FROM Users WHERE userID='".$userID."'");
+            $res = $db->delete("DELETE FROM User WHERE id_user='".$userID."'");
             if($res==0){
                 return true;
             } else {
