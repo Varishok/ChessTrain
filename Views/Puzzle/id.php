@@ -29,6 +29,14 @@ $chessman = $_SESSION['chessman'];?>
                 <input type="hidden" name="turn_number" value="<?=$turn_number?>">
                 <input type="submit" value="Проверить"/>
             </form>
+            <?if(!empty($_SESSION['hints'])):?>
+                <a id="hint" href="#">Показать подсказки</a>
+                <div class="hint">
+                    <?while ($hint = $_SESSION['hints']->fetch_array(MYSQLI_ASSOC)):?>
+                    <span><?=$hint['hint'];?></span>
+                    <?endwhile;?>
+                </div>
+            <?endif;?>
             <a href="/puzzle/">Вернуться назад</a>
         </div>
     </div>

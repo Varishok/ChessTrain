@@ -4,6 +4,17 @@ class DebutController
     public function actionIndex() {
         session_start();
         include_once(ROOT.'/Assets/Repository/DebutRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            $res = UserRepository::getDebut($_SESSION['id']);
+            $viewDebut = array();
+            if(!empty($res)) {
+                while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                    $viewDebut[] = $row['id_debut'];
+                }
+            }
+            $_SESSION['view_debut'] = $viewDebut;
+        }
         $_SESSION['debuts'] = DebutRepository::getAllDebut();
         $view = '/Views/Debut/index.php';
         render($view);
@@ -14,6 +25,10 @@ class DebutController
         unset($_SESSION['debut_pawn']);
         unset($_SESSION['debut_turn']);
         include_once(ROOT.'/Assets/Repository/DebutRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            UserRepository::viewDebut($_SESSION['id'],$id);
+        }
         $_SESSION['debut'] = DebutRepository::getDebut($id)->fetch_array(MYSQLI_ASSOC);
         $Debut_move = DebutRepository::getDebutMove($id);
         $Debut_turn = array();

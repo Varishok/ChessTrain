@@ -200,7 +200,7 @@ $(function(){
         $('#turn'+ counter).remove();
     });
 
-    $('.element-list').click(function () {
+    $('.game').click(function () {
         var id = $(this).data('id');
         window.location.href = window.location.href + id + '/';
     });
@@ -470,5 +470,40 @@ $(function(){
                 }
             },
         });
+    });
+
+    //Literature
+    $('.simbol').click(function (e) {
+        e.preventDefault();
+        var simbol = $(this).attr('class');
+        var favorit = simbol.split(" ");
+        var values = {"favorit":favorit[1]};
+        var div = $(this).parent();
+        values['id'] = div.data('id');
+        $.ajax({
+            method: "POST",
+            url: "/literature/favorit/",
+            dataType: "json",
+            data: values,
+            success: function(res){
+                console.log(res);
+                if(res!==null){
+                    if(res[0] == 'favorit'){
+                        alert("Добавлено в избранное");
+                    }else{
+                        alert("Удалено из избранного");
+                    }
+                }else{
+                    alert("Ходы закончились")
+                }
+            },
+        });
+    });
+
+    //Hint
+    $('#hint').click(function (e) {
+        e.preventDefault();
+        $('.hint').show();
+        return true;
     });
 });

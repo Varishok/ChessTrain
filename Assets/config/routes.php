@@ -34,8 +34,12 @@ return array(
     'debut' => 'debut',
 
     'literature/literature' => 'literature/literature',
+    'literature/favorit' => 'literature/favorit',
     'literature/add' => 'literature/add',
     'literature' => 'literature',
+
+    'hint/add' => 'hint/add',
+    'hint' => 'hint',
 
     'logout' => 'index/logout',
     'registered' => 'index/registered',

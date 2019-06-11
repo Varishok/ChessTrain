@@ -4,6 +4,17 @@ class CheckmateController
     public function actionIndex() {
         session_start();
         include_once(ROOT.'/Assets/Repository/CheckmateRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            $res = UserRepository::getCheckmate($_SESSION['id']);
+            $viewCheckmate = array();
+            if(!empty($res)) {
+                while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                    $viewCheckmate[] = $row['id_checkmate'];
+                }
+            }
+            $_SESSION['view_checkmate'] = $viewCheckmate;
+        }
         $_SESSION['checkmates'] = CheckmateRepository::getAllCheckmate();
         $view = '/Views/Checkmate/index.php';
         render($view);
@@ -13,9 +24,15 @@ class CheckmateController
         session_start();
         include_once(ROOT.'/Assets/Repository/CheckmateRepository.php');
         include_once(ROOT.'/Assets/Repository/ChessmanRepository.php');
+        include_once(ROOT.'/Assets/Repository/HintRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            UserRepository::viewCheckmate($_SESSION['id'],$id);
+        }
         $_SESSION['id_checkmate'] = $id;
         $side = CheckmateRepository::getCheckmate($id);
         $_SESSION['side'] = $side->fetch_array(MYSQLI_ASSOC)['id_side'];
+        $_SESSION['hints'] = HintRepository::getCheckmateHint($id);
         $res = CheckmateRepository::getCheckmateChessman($id);
         $chessmans = array();
         while($row = $res->fetch_array(MYSQLI_ASSOC)){
@@ -48,7 +65,7 @@ class CheckmateController
         }
         $check_turns = array();
         while($check_turn = $check_Checkmate->fetch_array(MYSQLI_ASSOC)){
-            $check_turns[$check_turn['turn']][$check_turn['id_side']] = ['starting_position' => $check_turn['starting_position'], 'ending_position' => $check_turn['ending_position'],];
+            $check_turns[$check_turn['turn']][$check_turn['id_side_move']] = ['starting_position' => $check_turn['starting_position'], 'ending_position' => $check_turn['ending_position'],];
         }
         $result = array();
         foreach ($turns as $key=>$turn){

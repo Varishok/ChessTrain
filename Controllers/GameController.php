@@ -4,6 +4,17 @@ class GameController
     public function actionIndex() {
         session_start();
         include_once(ROOT.'/Assets/Repository/GameRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            $res = UserRepository::getGame($_SESSION['id']);
+            $viewGame = array();
+            if(!empty($res)) {
+                while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                    $viewGame[] = $row['id_game'];
+                }
+            }
+            $_SESSION['view_game'] = $viewGame;
+        }
         $_SESSION['games'] = GameRepository::getAllGame();
         $view = '/Views/Game/index.php';
         render($view);
@@ -14,6 +25,10 @@ class GameController
         unset($_SESSION['game_pawn']);
         include_once(ROOT.'/Assets/Repository/GameRepository.php');
         $_SESSION['game'] = GameRepository::getGame($id)->fetch_array(MYSQLI_ASSOC);
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            UserRepository::viewGame($_SESSION['id'],$id);
+        }
         $game_move = GameRepository::getGameMove($id);
         $game_turn = array();
         while($move = $game_move->fetch_array(MYSQLI_ASSOC)){

@@ -4,6 +4,17 @@ class PuzzleController
     public function actionIndex() {
         session_start();
         include_once(ROOT.'/Assets/Repository/PuzzleRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            $res = UserRepository::getPuzzle($_SESSION['id']);
+            $viewPuzzle = array();
+            if(!empty($res)) {
+                while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+                    $viewPuzzle[] = $row['id_puzzle'];
+                }
+            }
+            $_SESSION['view_puzzle'] = $viewPuzzle;
+        }
         $_SESSION['puzzles'] = PuzzleRepository::getAllPuzzle();
         $view = '/Views/Puzzle/index.php';
         render($view);
@@ -13,9 +24,20 @@ class PuzzleController
         session_start();
         include_once(ROOT.'/Assets/Repository/PuzzleRepository.php');
         include_once(ROOT.'/Assets/Repository/ChessmanRepository.php');
+        include_once(ROOT.'/Assets/Repository/HintRepository.php');
+        if(!empty($_SESSION['id'])){
+            include_once(ROOT.'/Assets/Repository/UserRepository.php');
+            UserRepository::viewPuzzle($_SESSION['id'],$id);
+        }
         $_SESSION['id_puzzle'] = $id;
-        $side = PuzzleRepository::getPuzzle($id);
-        $_SESSION['side'] = $side->fetch_array(MYSQLI_ASSOC)['id_side'];
+        $puzzle = PuzzleRepository::getPuzzle($id)->fetch_array(MYSQLI_ASSOC);
+        $_SESSION['side'] = $puzzle['id_side'];
+        $id_hint = $puzzle['id_hint'];
+        if(!empty($id_hint)){
+            $_SESSION['hints'] = HintRepository::getHint($id_hint);
+        }else{
+            unset($_SESSION['hints']);
+        }
         $res = PuzzleRepository::getPuzzleChessman($id);
         $chessmans = array();
         while($row = $res->fetch_array(MYSQLI_ASSOC)){
@@ -48,7 +70,7 @@ class PuzzleController
         }
         $check_turns = array();
         while($check_turn = $check_puzzle->fetch_array(MYSQLI_ASSOC)){
-            $check_turns[$check_turn['turn']][$check_turn['id_side']] = ['starting_position' => $check_turn['starting_position'], 'ending_position' => $check_turn['ending_position'],];
+            $check_turns[$check_turn['turn']][$check_turn['id_side_move']] = ['starting_position' => $check_turn['starting_position'], 'ending_position' => $check_turn['ending_position'],];
         }
         $result = array();
         foreach ($turns as $key=>$turn){

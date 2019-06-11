@@ -301,6 +301,7 @@ main.info-block {
 .element-list{
     float:left;
     width: 230px;
+    height: 95px;
     padding: 5px;
     text-align: center;
 }
@@ -319,7 +320,8 @@ main.info-block {
     border: 2px black;
 }
 .game-table-div{
-    height:300px;
+    min-height: 150px;
+    max-height: 300px;
     overflow:scroll;
 }
 .game-table tr{
@@ -339,5 +341,30 @@ main.info-block {
     text-decoration: none;
     text-color: black;
     align-items: center;
+}
+/*-------------------------------*/
+
+/*---------LITERATURE------------*/
+.not-favorit::after{
+    content: "\2606";
+}
+.favorit::after{
+    content: "\2605";
+}
+
+.simbol{
+    font-size: 30px;
+    widht: 1px;
+    height: 1px;
+    position: relative;
+    left: 100px;
+    top: -50px;
+}
+/*-------------------------------*/
+
+/*---------HINT------------*/
+.hint{
+    display: none;
+    padding: 3px;
 }
 /*-------------------------------*/
